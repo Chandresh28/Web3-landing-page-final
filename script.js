@@ -369,3 +369,26 @@ if (window.ethereum) {
     window.ethereum.on("accountsChanged", handleWalletAccounts);
 
 }
+// Restore an already-connected wallet when the page loads
+async function restoreWalletConnection() {
+
+    if (!window.ethereum) {
+        return;
+    }
+
+    try {
+
+        const accounts = await window.ethereum.request({
+            method: "eth_accounts"
+        });
+
+        handleWalletAccounts(accounts);
+
+    } catch (error) {
+
+        console.error("Could not restore wallet connection:", error);
+
+    }
+}
+
+restoreWalletConnection();
