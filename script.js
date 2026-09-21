@@ -283,3 +283,89 @@ flowSteps.forEach((step) => {
     });
 
 });
+// ===============================
+// WALLET CONNECTION
+// ===============================
+
+const connectWalletButton = document.querySelector("#connect-wallet");
+
+let walletAddress = null;
+
+function shortenAddress(address) {
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
+}
+
+async function connectWallet() {
+
+    if (!window.ethereum) {
+        connectWalletButton.textContent = "Install MetaMask";
+        return;
+    }
+
+    try {
+
+        connectWalletButton.disabled = true;
+        connectWalletButton.textContent = "Connecting...";
+
+        const accounts = await window.ethereum.request({
+            method: "eth_requestAccounts"
+        });
+
+        handleWalletAccounts(accounts);
+
+    } catch (error) {
+
+        console.error("Wallet connection failed:", error);
+
+        if (error.code === 4001) {
+            connectWalletButton.textContent = "Connection Rejected";
+        } else {
+            connectWalletButton.textContent = "Try Again";
+        }
+
+    } finally {
+
+        connectWalletButton.disabled = false;
+
+        setTimeout(() => {
+
+            if (walletAddress) {
+                connectWalletButton.textContent =
+                    shortenAddress(walletAddress);
+            }
+
+        }, 1200);
+    }
+}
+
+
+function handleWalletAccounts(accounts) {
+
+    if (!accounts || accounts.length === 0) {
+
+        walletAddress = null;
+
+        connectWalletButton.textContent = "Connect Wallet";
+
+        connectWalletButton.classList.remove("connected");
+
+        return;
+    }
+
+    walletAddress = accounts[0];
+
+    connectWalletButton.textContent =
+        shortenAddress(walletAddress);
+
+    connectWalletButton.classList.add("connected");
+}
+
+
+connectWalletButton.addEventListener("click", connectWallet);
+
+
+if (window.ethereum) {
+
+    window.ethereum.on("accountsChanged", handleWalletAccounts);
+
+}

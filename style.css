@@ -1825,3 +1825,45 @@ footer p {
     letter-spacing: 1px;
     color: #777;
 }
+/* ===============================
+   WALLET BUTTON
+   =============================== */
+
+.wallet-button {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border: 1px solid rgba(155, 124, 255, 0.45);
+    border-radius: 30px;
+
+    background: rgba(155, 124, 255, 0.08);
+
+    color: #f5f3ee;
+
+    font-family: inherit;
+    font-size: 0.85rem;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.wallet-button:hover {
+    background: rgba(155, 124, 255, 0.16);
+
+    border-color: #9b7cff;
+
+    transform: translateY(-2px);
+}
+
+.wallet-button.connected {
+    border-color: rgba(155, 124, 255, 0.7);
+
+    background: rgba(155, 124, 255, 0.12);
+
+    color: #bca8ff;
+}
