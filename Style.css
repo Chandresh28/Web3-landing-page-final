@@ -17,13 +17,22 @@
 html {
     scroll-behavior: smooth;
 }
+section {
+    scroll-margin-top: 90px;
+}
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Inter", sans-serif;
     background: #08090d;
     color: #f5f3ee;
     line-height: 1.6;
     overflow-x: hidden;
+}
+h1,
+h2,
+h3,
+.logo {
+    font-family: "Space Grotesk", sans-serif;
 }
 
 a {
@@ -105,6 +114,33 @@ button {
         color 0.25s ease,
         transform 0.25s ease;
 }
+.navbar nav a {
+    position: relative;
+}
+
+.navbar nav a.active {
+    color: #f5f3ee;
+}
+
+.navbar nav a.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -10px;
+
+    width: 5px;
+    height: 5px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #9b7cff;
+
+    box-shadow: 0 0 10px rgba(155, 124, 255, 0.8);
+}
 
 .navbar nav a:hover {
     color: #ffffff;
@@ -116,19 +152,14 @@ button {
 /* Navigation button */
 
 .nav-button {
-    padding: 9px 17px;
+    display: inline-block;
+    padding: 10px 18px;
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
-
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 30px;
 
-    color: #eeeeee;
-
-    font-size: 0.85rem;
-
-    transition:
-        border-color 0.25s ease,
-        background 0.25s ease;
+    background: transparent;
+    color: white;
 }
 
 .nav-button:hover {
@@ -187,20 +218,14 @@ h2 span {
 
 .hero {
     min-height: 100vh;
-
-    padding-top: 160px;
-    padding-bottom: 100px;
+    padding: 130px 7% 70px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
-    gap: 60px;
+    gap: 50px;
 
     position: relative;
-
     overflow: hidden;
 }
 
@@ -229,12 +254,8 @@ h2 span {
 
 
 /* Hero text */
-
 .hero-content {
-    max-width: 720px;
-
-    position: relative;
-
+    max-width: 650px;
     z-index: 2;
 }
 
@@ -1425,4 +1446,382 @@ footer p {
         transition-duration: 0.01ms !important;
     }
 
+}
+.hero-meta {
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    color: #70727d;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #9b7cff;
+
+    box-shadow: 0 0 12px rgba(155, 124, 255, 0.8);
+
+    animation: statusPulse 2s infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.4);
+    }
+}
+/* ============================= */
+/* WEB3 IN REAL LIFE              */
+/* ============================= */
+
+.real-world {
+    padding: 120px 6%;
+}
+
+.real-world .section-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.real-world h2 {
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 0.95;
+    margin: 0 0 25px;
+}
+
+.section-intro {
+    max-width: 600px;
+    line-height: 1.6;
+    opacity: 0.7;
+    margin-bottom: 60px;
+}
+
+.real-world-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.real-world-card {
+    position: relative;
+    padding: 35px;
+    min-height: 300px;
+
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 24px;
+
+    background: rgba(255,255,255,0.04);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.real-world-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255,255,255,0.4);
+    box-shadow: 0 20px 60px rgba(140,100,255,0.15);
+}
+
+.card-number {
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+.card-icon {
+    font-size: 35px;
+    margin: 35px 0 20px;
+}
+
+.real-world-card h3 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.real-world-card p {
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+.real-world-card strong {
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+@media (max-width: 700px) {
+
+    .real-world {
+        padding: 80px 20px;
+    }
+
+    .real-world-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .real-world-card {
+        min-height: auto;
+    }
+}
+.social-flow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 28px;
+
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    color: #bca8ff;
+}
+
+.social-flow span {
+    padding: 7px 10px;
+
+    border: 1px solid rgba(155, 124, 255, 0.3);
+    border-radius: 5px;
+
+    background: rgba(155, 124, 255, 0.04);
+}
+
+.social-flow span:nth-child(even) {
+    border: none;
+    padding: 0;
+
+    color: #777;
+}
+.finance-flow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 28px;
+
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    color: #bca8ff;
+}
+
+.finance-flow span {
+    padding: 7px 10px;
+
+    border: 1px solid rgba(155, 124, 255, 0.3);
+    border-radius: 5px;
+
+    background: rgba(155, 124, 255, 0.04);
+}
+
+.finance-flow span:nth-child(even) {
+    border: none;
+    padding: 0;
+    color: #777;
+}
+.ownership-flow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    color: #bca8ff;
+}
+
+.ownership-flow span {
+    padding: 7px 10px;
+    border: 1px solid rgba(155, 124, 255, 0.3);
+    border-radius: 5px;
+    background: rgba(155, 124, 255, 0.04);
+}
+
+.ownership-flow span:nth-child(even) {
+    border: none;
+    padding: 0;
+    color: #777;
+}
+/* ================= SCROLL REVEAL ================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ===============================
+   NETWORK SHOOTING DOT
+   =============================== */
+
+.network-visual::after {
+    content: "";
+
+    position: absolute;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 10px rgba(255, 255, 255, 0.9),
+        0 0 24px rgba(155, 124, 255, 0.7);
+
+    animation: dataPulse 4s ease-in-out infinite;
+}
+
+@keyframes dataPulse {
+
+    0% {
+        left: 18%;
+        top: 58%;
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    50% {
+        left: 50%;
+        top: 40%;
+        opacity: 1;
+    }
+
+    85% {
+        left: 78%;
+        top: 28%;
+        opacity: 1;
+    }
+
+    100% {
+        left: 82%;
+        top: 25%;
+        opacity: 0;
+    }
+}
+/* ===============================
+   INTERACTIVE FLOW DETAIL
+   =============================== */
+
+.flow-step {
+    cursor: pointer;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.flow-step:hover {
+    transform: translateY(-5px);
+}
+
+.flow-step.selected h3 {
+    color: #bca8ff;
+}
+
+.flow-step.selected span {
+    color: #bca8ff;
+}
+
+.flow-detail {
+    max-width: 720px;
+    margin: 60px auto 0;
+    padding: 35px;
+
+    border: 1px solid rgba(155, 124, 255, 0.25);
+    border-radius: 20px;
+
+    background: rgba(155, 124, 255, 0.04);
+
+    text-align: center;
+
+    transition: opacity 0.3s ease,
+                transform 0.3s ease;
+}
+
+.flow-detail-label {
+    color: #9b7cff;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.flow-detail h3 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+}
+
+.flow-detail > p:last-child {
+    color: #999;
+    max-width: 550px;
+    margin: auto;
+}
+.nft-example {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin-top: 30px;
+}
+
+.nft-stamp {
+    width: 70px;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px dashed #9b7cff;
+    border-radius: 12px;
+
+    color: #bca8ff;
+    font-weight: 700;
+
+    box-shadow: 0 0 25px rgba(139, 92, 246, 0.12);
+}
+
+.nft-record {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.nft-record span {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+    color: #777;
+}
+
+.nft-record strong {
+    font-size: 1.3rem;
+    color: #f5f3ee;
+}
+
+.nft-record small {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    color: #777;
 }

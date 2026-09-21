@@ -151,3 +151,135 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 });
+// ===============================
+// SCROLL REVEAL
+// ===============================
+
+const revealElements = document.querySelectorAll(
+    ".evolution-line, .concept-card, .flow-step, .real-world-card, .cta"
+);
+
+revealElements.forEach((element) => {
+    element.classList.add("reveal");
+});
+
+const revealObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                // Element is visible
+                entry.target.classList.add("show");
+
+            } else {
+
+                // Element left the screen
+                entry.target.classList.remove("show");
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.15
+    }
+);
+
+revealElements.forEach((element) => {
+    revealObserver.observe(element);
+});
+// ===============================
+// ACTIVE NAVIGATION
+// ===============================
+
+const navLinks = document.querySelectorAll(".navbar nav a");
+
+const navSections = document.querySelectorAll(
+    "#home, #evolution, #concepts, #how-it-works, #real-world"
+);
+
+const navObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                navLinks.forEach((link) => {
+                    link.classList.remove("active");
+                });
+
+                const activeLink = document.querySelector(
+                    `.navbar nav a[href="#${entry.target.id}"]`
+                );
+
+                if (activeLink) {
+                    activeLink.classList.add("active");
+                }
+            }
+
+        });
+
+    },
+    {
+        rootMargin: "-35% 0px -55% 0px",
+        threshold: 0
+    }
+);
+
+navSections.forEach((section) => {
+    navObserver.observe(section);
+});
+// ===============================
+// INTERACTIVE WEB3 FLOW
+// ===============================
+
+const flowSteps = document.querySelectorAll(".flow-step");
+const flowDetail = document.querySelector("#flow-detail");
+
+const flowInfo = {
+    you: {
+        title: "You",
+        text: "You interact with a Web3 application and initiate an action, such as transferring an asset or interacting with a smart contract."
+    },
+
+    wallet: {
+        title: "Wallet",
+        text: "Your wallet can hold digital assets and cryptographic keys, and can be used to approve or sign transactions."
+    },
+
+    blockchain: {
+        title: "Blockchain",
+        text: "The network processes and records the transaction according to its rules and consensus mechanism."
+    },
+
+    contract: {
+        title: "Smart Contract",
+        text: "If a smart contract is involved, its programmed conditions determine what happens when the transaction is executed."
+    }
+};
+
+flowSteps.forEach((step) => {
+
+    step.addEventListener("click", () => {
+
+        const selectedStep = step.dataset.step;
+        const info = flowInfo[selectedStep];
+
+        flowSteps.forEach((item) => {
+            item.classList.remove("selected");
+        });
+
+        step.classList.add("selected");
+
+        flowDetail.innerHTML = `
+            <p class="flow-detail-label">STEP ${selectedStep.toUpperCase()}</p>
+            <h3>${info.title}</h3>
+            <p>${info.text}</p>
+        `;
+    });
+
+});
