@@ -17,6 +17,41 @@
 html {
     scroll-behavior: smooth;
 }
+
+/* =========================================================
+   RGB ACCENT ENGINE
+   ========================================================= */
+
+@property --rgb-hue {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+}
+
+:root {
+    --rgb-hue: 0deg;
+
+    --rgb-primary: hsl(var(--rgb-hue), 100%, 68%);
+    --rgb-strong: hsl(calc(var(--rgb-hue) + 2deg), 100%, 65%);
+    --rgb-core: hsl(calc(var(--rgb-hue) + 4deg), 100%, 62%);
+    --rgb-hover: hsl(calc(var(--rgb-hue) + 5deg), 100%, 68%);
+    --rgb-bright: hsl(var(--rgb-hue), 100%, 77%);
+    --rgb-soft: hsl(var(--rgb-hue), 100%, 84%);
+    --rgb-deep: hsl(calc(var(--rgb-hue) + 2deg), 75%, 62%);
+
+    animation: rgbHueCycle 8s linear infinite;
+}
+
+@keyframes rgbHueCycle {
+    0% {
+        --rgb-hue: 0deg;
+    }
+
+    100% {
+        --rgb-hue: 360deg;
+    }
+}
+
 section {
     scroll-margin-top: 90px;
 }
@@ -46,7 +81,7 @@ button {
 }
 
 ::selection {
-    background: #ff4d5a;
+    background: var(--rgb-strong);
     color: #08090d;
 }
 
@@ -91,7 +126,7 @@ button {
 }
 
 .logo span {
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 }
 
 
@@ -114,7 +149,6 @@ button {
         color 0.25s ease,
         transform 0.25s ease;
 }
-
 .navbar nav a {
     position: relative;
 }
@@ -138,9 +172,9 @@ button {
 
     border-radius: 50%;
 
-    background: #ff4d5a;
+    background: var(--rgb-strong);
 
-    box-shadow: 0 0 10px rgba(255, 77, 90, 0.80);
+    box-shadow: 0 0 10px hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.80);
 }
 
 .navbar nav a:hover {
@@ -164,9 +198,9 @@ button {
 }
 
 .nav-button:hover {
-    border-color: #ff4d5a;
+    border-color: var(--rgb-strong);
 
-    background: rgba(255, 59, 79, 0.08);
+    background: hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.08);
 }
 
 
@@ -181,7 +215,7 @@ section {
 .section-label {
     margin-bottom: 18px;
 
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 
     font-size: 0.75rem;
 
@@ -199,7 +233,7 @@ h2 {
 }
 
 h2 span {
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 }
 
 .section-description {
@@ -244,7 +278,7 @@ h2 span {
     top: 15%;
     right: 20%;
 
-    background: rgba(255, 59, 79, 0.06);
+    background: hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.06);
 
     filter: blur(100px);
 
@@ -263,7 +297,7 @@ h2 span {
 .eyebrow {
     margin-bottom: 22px;
 
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 
     font-size: 0.75rem;
 
@@ -285,7 +319,7 @@ h2 span {
 .hero h1 span {
     display: block;
 
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 }
 
 .hero-description {
@@ -332,17 +366,17 @@ h2 span {
 }
 
 .primary-button {
-    background: #ff3b4f;
+    background: var(--rgb-core);
 
     color: #ffffff;
 
-    border: 1px solid #ff3b4f;
+    border: 1px solid var(--rgb-core);
 }
 
 .primary-button:hover {
     transform: translateY(-3px);
 
-    background: #ff5b6b;
+    background: var(--rgb-hover);
 }
 
 .secondary-button {
@@ -356,7 +390,7 @@ h2 span {
 .secondary-button:hover {
     transform: translateY(-3px);
 
-    border-color: #ff4d5a;
+    border-color: var(--rgb-strong);
 
     color: #ffffff;
 }
@@ -390,7 +424,7 @@ h2 span {
     width: 340px;
     height: 340px;
 
-    border: 1px dashed rgba(255, 92, 92, 0.22);
+    border: 1px dashed hsla(var(--rgb-hue), 100%, 68%, 0.22);
 
     border-radius: 50%;
 
@@ -404,7 +438,7 @@ h2 span {
 
     inset: 48px;
 
-    border: 1px dashed rgba(255, 92, 92, 0.17);
+    border: 1px dashed hsla(var(--rgb-hue), 100%, 68%, 0.17);
 
     border-radius: 50%;
 }
@@ -416,7 +450,7 @@ h2 span {
 
     inset: 100px;
 
-    border: 1px dashed rgba(255, 92, 92, 0.13);
+    border: 1px dashed hsla(var(--rgb-hue), 100%, 68%, 0.13);
 
     border-radius: 50%;
 }
@@ -438,15 +472,15 @@ h2 span {
 
     justify-content: center;
 
-    border: 1px solid rgba(255, 92, 92, 0.75);
+    border: 1px solid hsla(var(--rgb-hue), 100%, 68%, 0.75);
 
     border-radius: 50%;
 
-    background: rgba(255, 59, 79, 0.08);
+    background: hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.08);
 
     box-shadow:
-        0 0 40px rgba(255, 59, 79, 0.22),
-        inset 0 0 30px rgba(255, 59, 79, 0.08);
+        0 0 40px hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.22),
+        inset 0 0 30px hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.08);
 }
 
 .network-core::before {
@@ -456,7 +490,7 @@ h2 span {
 
     inset: 10px;
 
-    border: 1px solid rgba(255, 92, 92, 0.15);
+    border: 1px solid hsla(var(--rgb-hue), 100%, 68%, 0.15);
 
     border-radius: 50%;
 }
@@ -466,7 +500,7 @@ h2 span {
 
     z-index: 2;
 
-    color: #ffb3b8;
+    color: var(--rgb-soft);
 
     font-size: 0.8rem;
 
@@ -488,11 +522,11 @@ h2 span {
 
     border-radius: 50%;
 
-    background: #ff8a8a;
+    background: var(--rgb-bright);
 
     box-shadow:
-        0 0 8px rgba(255, 92, 92, 0.70),
-        0 0 22px rgba(255, 92, 92, 0.35);
+        0 0 8px hsla(var(--rgb-hue), 100%, 68%, 0.70),
+        0 0 22px hsla(var(--rgb-hue), 100%, 68%, 0.35);
 
     animation: nodePulse 2.8s ease-in-out infinite;
 }
@@ -566,9 +600,9 @@ h2 span {
 
     border-radius: 50%;
 
-    background: #ff5c5c;
+    background: var(--rgb-primary);
 
-    box-shadow: 0 0 8px rgba(255, 92, 92, 0.70);
+    box-shadow: 0 0 8px hsla(var(--rgb-hue), 100%, 68%, 0.70);
 }
 
 
@@ -680,19 +714,19 @@ h2 span {
 /* Current Web3 era */
 
 .era.current .era-number {
-    border-color: #ff5c5c;
+    border-color: var(--rgb-primary);
 
-    color: #ffb3b8;
+    color: var(--rgb-soft);
 
-    box-shadow: 0 0 22px rgba(255, 59, 79, 0.22);
+    box-shadow: 0 0 22px hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.22);
 }
 
 .era.current h3 {
-    color: #ffb3b8;
+    color: var(--rgb-soft);
 }
 
 .era.current .era-type {
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 }
 
 
@@ -747,12 +781,12 @@ h2 span {
 }
 
 .concept-card:hover {
-    border-color: rgba(255, 92, 92, 0.60);
+    border-color: hsla(var(--rgb-hue), 100%, 68%, 0.60);
 
     background:
         linear-gradient(
             145deg,
-            rgba(255, 59, 79, 0.08),
+            hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.08),
             rgba(255, 255, 255, 0.02)
         );
 }
@@ -806,7 +840,7 @@ h2 span {
 }
 
 .concept-icon {
-    color: #ffb3b8;
+    color: var(--rgb-soft);
 
     font-size: 1.45rem;
 }
@@ -851,7 +885,7 @@ h2 span {
 
     margin-right: 19px;
 
-    border: 1px solid #e94a5a;
+    border: 1px solid var(--rgb-deep);
 
     transform: rotate(45deg);
 
@@ -886,7 +920,7 @@ h2 span {
     top: 14px;
     right: -19px;
 
-    background: #e94a5a;
+    background: var(--rgb-deep);
 
     transform: rotate(-45deg);
 }
@@ -909,11 +943,11 @@ h2 span {
 .contract-flow span {
     padding: 7px 11px;
 
-    border: 1px solid rgba(255, 92, 92, 0.38);
+    border: 1px solid hsla(var(--rgb-hue), 100%, 68%, 0.38);
 
     border-radius: 5px;
 
-    color: #ffb3b8;
+    color: var(--rgb-soft);
 
     font-size: 0.65rem;
 
@@ -921,7 +955,7 @@ h2 span {
 
     letter-spacing: 1px;
 
-    background: rgba(255, 59, 79, 0.04);
+    background: hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.04);
 }
 
 
@@ -947,9 +981,9 @@ h2 span {
 
     border-radius: 50%;
 
-    background: #ff8a8a;
+    background: var(--rgb-bright);
 
-    box-shadow: 0 0 10px rgba(255, 92, 92, 0.70);
+    box-shadow: 0 0 10px hsla(var(--rgb-hue), 100%, 68%, 0.70);
 }
 
 .mini-network i::after {
@@ -963,7 +997,7 @@ h2 span {
     left: 6px;
     top: 3px;
 
-    background: rgba(255, 92, 92, 0.35);
+    background: hsla(var(--rgb-hue), 100%, 68%, 0.35);
 
     transform-origin: left;
 }
@@ -1022,7 +1056,7 @@ h2 span {
 .ownership-tag span {
     margin-right: 6px;
 
-    color: #ff8a8a;
+    color: var(--rgb-bright);
 }
 
 
@@ -1036,7 +1070,7 @@ h2 span {
     right: 8px;
     bottom: -30px;
 
-    color: rgba(255, 92, 92, 0.07);
+    color: hsla(var(--rgb-hue), 100%, 68%, 0.07);
 
     font-size: 7rem;
 
@@ -1056,7 +1090,7 @@ h2 span {
     left: 30px;
     bottom: 30px;
 
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 
     font-size: 1.1rem;
 
@@ -1091,7 +1125,7 @@ h2 span {
 }
 
 .flow-step > span {
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 
     font-size: 0.7rem;
 
@@ -1113,7 +1147,7 @@ h2 span {
 }
 
 .arrow {
-    color: #ff5c5c;
+    color: var(--rgb-primary);
 
     font-size: 1.8rem;
 
@@ -1448,7 +1482,6 @@ footer p {
     }
 
 }
-
 .hero-meta {
     margin-top: 24px;
 
@@ -1467,9 +1500,9 @@ footer p {
 
     border-radius: 50%;
 
-    background: #ff4d5a;
+    background: var(--rgb-strong);
 
-    box-shadow: 0 0 12px rgba(255, 77, 90, 0.80);
+    box-shadow: 0 0 12px hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.80);
 
     animation: statusPulse 2s infinite;
 }
@@ -1538,7 +1571,7 @@ footer p {
 .real-world-card:hover {
     transform: translateY(-8px);
     border-color: rgba(255,255,255,0.4);
-    box-shadow: 0 20px 60px rgba(255, 92, 92, 0.15);
+    box-shadow: 0 20px 60px hsla(var(--rgb-hue), 100%, 68%, 0.15);
 }
 
 .card-number {
@@ -1589,16 +1622,16 @@ footer p {
 
     font-size: 0.65rem;
     letter-spacing: 1.5px;
-    color: #ff8a8a;
+    color: var(--rgb-bright);
 }
 
 .social-flow span {
     padding: 7px 10px;
 
-    border: 1px solid rgba(255, 77, 90, 0.30);
+    border: 1px solid hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.30);
     border-radius: 5px;
 
-    background: rgba(255, 77, 90, 0.04);
+    background: hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.04);
 }
 
 .social-flow span:nth-child(even) {
@@ -1607,7 +1640,6 @@ footer p {
 
     color: #777;
 }
-
 .finance-flow {
     display: flex;
     align-items: center;
@@ -1617,16 +1649,16 @@ footer p {
 
     font-size: 0.65rem;
     letter-spacing: 1.5px;
-    color: #ff8a8a;
+    color: var(--rgb-bright);
 }
 
 .finance-flow span {
     padding: 7px 10px;
 
-    border: 1px solid rgba(255, 77, 90, 0.30);
+    border: 1px solid hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.30);
     border-radius: 5px;
 
-    background: rgba(255, 77, 90, 0.04);
+    background: hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.04);
 }
 
 .finance-flow span:nth-child(even) {
@@ -1634,7 +1666,6 @@ footer p {
     padding: 0;
     color: #777;
 }
-
 .ownership-flow {
     display: flex;
     align-items: center;
@@ -1643,14 +1674,14 @@ footer p {
 
     font-size: 0.65rem;
     letter-spacing: 1.5px;
-    color: #ff8a8a;
+    color: var(--rgb-bright);
 }
 
 .ownership-flow span {
     padding: 7px 10px;
-    border: 1px solid rgba(255, 77, 90, 0.30);
+    border: 1px solid hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.30);
     border-radius: 5px;
-    background: rgba(255, 77, 90, 0.04);
+    background: hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.04);
 }
 
 .ownership-flow span:nth-child(even) {
@@ -1658,8 +1689,6 @@ footer p {
     padding: 0;
     color: #777;
 }
-
-
 /* ================= SCROLL REVEAL ================= */
 
 .reveal {
@@ -1674,8 +1703,6 @@ footer p {
     opacity: 1;
     transform: translateY(0);
 }
-
-
 /* ===============================
    NETWORK SHOOTING DOT
    =============================== */
@@ -1694,7 +1721,7 @@ footer p {
 
     box-shadow:
         0 0 10px rgba(255, 255, 255, 0.9),
-        0 0 24px rgba(255, 77, 90, 0.70);
+        0 0 24px hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.70);
 
     animation: dataPulse 4s ease-in-out infinite;
 }
@@ -1729,8 +1756,6 @@ footer p {
         opacity: 0;
     }
 }
-
-
 /* ===============================
    INTERACTIVE FLOW DETAIL
    =============================== */
@@ -1747,11 +1772,11 @@ footer p {
 }
 
 .flow-step.selected h3 {
-    color: #ff8a8a;
+    color: var(--rgb-bright);
 }
 
 .flow-step.selected span {
-    color: #ff8a8a;
+    color: var(--rgb-bright);
 }
 
 .flow-detail {
@@ -1759,10 +1784,10 @@ footer p {
     margin: 60px auto 0;
     padding: 35px;
 
-    border: 1px solid rgba(255, 77, 90, 0.25);
+    border: 1px solid hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.25);
     border-radius: 20px;
 
-    background: rgba(255, 77, 90, 0.04);
+    background: hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.04);
 
     text-align: center;
 
@@ -1771,7 +1796,7 @@ footer p {
 }
 
 .flow-detail-label {
-    color: #ff4d5a;
+    color: var(--rgb-strong);
     font-size: 0.7rem;
     letter-spacing: 3px;
     font-weight: 700;
@@ -1788,7 +1813,6 @@ footer p {
     max-width: 550px;
     margin: auto;
 }
-
 .nft-example {
     display: flex;
     align-items: center;
@@ -1805,13 +1829,13 @@ footer p {
     align-items: center;
     justify-content: center;
 
-    border: 1px dashed #ff4d5a;
+    border: 1px dashed var(--rgb-strong);
     border-radius: 12px;
 
-    color: #ff8a8a;
+    color: var(--rgb-bright);
     font-weight: 700;
 
-    box-shadow: 0 0 25px rgba(255, 59, 79, 0.12);
+    box-shadow: 0 0 25px hsla(calc(var(--rgb-hue) + 4deg), 100%, 62%, 0.12);
 }
 
 .nft-record {
@@ -1836,8 +1860,6 @@ footer p {
     letter-spacing: 1px;
     color: #777;
 }
-
-
 /* ===============================
    WALLET BUTTON
    =============================== */
@@ -1847,10 +1869,10 @@ footer p {
 
     padding: 10px 18px;
 
-    border: 1px solid rgba(255, 77, 90, 0.45);
+    border: 1px solid hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.45);
     border-radius: 30px;
 
-    background: rgba(255, 77, 90, 0.08);
+    background: hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.08);
 
     color: #f5f3ee;
 
@@ -1866,17 +1888,25 @@ footer p {
 }
 
 .wallet-button:hover {
-    background: rgba(255, 77, 90, 0.16);
+    background: hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.16);
 
-    border-color: #ff4d5a;
+    border-color: var(--rgb-strong);
 
     transform: translateY(-2px);
 }
 
 .wallet-button.connected {
-    border-color: rgba(255, 77, 90, 0.70);
+    border-color: hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.70);
 
-    background: rgba(255, 77, 90, 0.12);
+    background: hsla(calc(var(--rgb-hue) + 2deg), 100%, 65%, 0.12);
 
-    color: #ff8a8a;
+    color: var(--rgb-bright);
+}
+
+/* Respect users who prefer reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        animation: none;
+        --rgb-hue: 0deg;
+    }
 }
